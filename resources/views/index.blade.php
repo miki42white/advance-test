@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
+    function convertStr(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+    return String.fromCharCode(s.charCodeAt(0)-0xFEE0);
+    });
+    }
+    $(function() {
+    $('.form-item-input').on('blur', function() {
+     var str = $(this).val();
+    $(this).val(convertStr(str));
+    });
+    });
+    </script>
   <title>COACHTECH</title>
   <style>
    h1{
